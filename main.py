@@ -1,6 +1,6 @@
 # main.py
-from src.memory_manager import MemoryManager
-from src.allocation_strategy import NextFitStrategy  # Import strategies
+from src.core.memory_manager import MemoryManager
+from src.strategies.allocation_strategy import NextFitStrategy  # Import strategies
 
 if __name__ == "__main__":
     # Example using Next Fit Strategy

@@ -1,5 +1,5 @@
 # block_operations.py
-from .memory_block import MemoryBlock
+from src.core.memory_block import MemoryBlock
 
 class BlockOperations:
     """

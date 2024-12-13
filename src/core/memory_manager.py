@@ -1,9 +1,9 @@
 # memory_manager.py
 from .memory_block import MemoryBlock
-from .allocation_strategy import NextFitStrategy  # Import the strategy
-from .block_operations import BlockOperations
-from .coalescing_manager import CoalescingManager
-from .resizing_manager import ResizingManager
+from src.strategies.allocation_strategy import NextFitStrategy  
+from src.utils.block_operations import BlockOperations
+from src.utils.coalescing_manager import CoalescingManager
+from src.utils.resizing_manager import ResizingManager
 
 class MemoryManager:
     """

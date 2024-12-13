@@ -1,5 +1,5 @@
 # resizing_manager.py
-from .memory_block import MemoryBlock
+from src.core.memory_block import MemoryBlock
 from .block_operations import BlockOperations
 
 class ResizingManager:
