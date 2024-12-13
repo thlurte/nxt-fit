@@ -38,10 +38,10 @@ class BlockOperations:
         Returns:
             MemoryBlock: The merged block, or None if blocks cannot be merged.
        """
-       if not block1 or not block2:
+      if not block1 or not block2:
             return None
-
-       if not block1.allocated and not block2.allocated and block1.start_address + block1.size == block2.start_address:
-           return MemoryBlock(block1.start_address, block1.size + block2.size)
-       else:
-            return None
+      
+      if not block1.allocated and not block2.allocated and block1.start_address + block1.size == block2.start_address:
+         return MemoryBlock(block1.start_address, block1.size + block2.size)
+      else:
+         return None
