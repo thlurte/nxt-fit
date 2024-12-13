@@ -1,5 +1,4 @@
 # memory_block.py -_-
-
 class MemoryBlock:
     """
     Represents a block of memory with a starting address, size, and allocation status.

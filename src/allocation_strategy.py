@@ -1,5 +1,5 @@
 # allocation_strategy.py
-from base_strategy import AllocationStrategy
+from .base_strategy import AllocationStrategy
 
 class NextFitStrategy(AllocationStrategy):
     """
