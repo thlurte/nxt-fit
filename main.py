@@ -1,24 +1,31 @@
-# main.py
 from src.core.memory_manager import MemoryManager
-from src.strategies.allocation_strategy import NextFitStrategy  # Import strategies
+from src.strategies.allocation_strategy import NextFitStrategy
+from src.core.memory_block import MemoryBlock
 
 if __name__ == "__main__":
-    # Example using Next Fit Strategy
-    memory_manager_nf = MemoryManager(total_size=100, allocation_strategy=NextFitStrategy())
-    print("Initial Memory Map (Next Fit):")
-    print(memory_manager_nf.get_memory_map())
+    # Initial Memory Blocks (represented as a list of MemoryBlock objects)
+    initial_memory = [
+        MemoryBlock(start_address=0, size=200),
+        MemoryBlock(start_address=200, size=300),
+        MemoryBlock(start_address=500, size=100),
+        MemoryBlock(start_address=600, size=500),
+        MemoryBlock(start_address=1100, size=50),
+    ]
 
-    pid1 = memory_manager_nf.allocate(1, 30)
-    pid2 = memory_manager_nf.allocate(2, 20)
-    pid3 = memory_manager_nf.allocate(3, 10)
+    memory_manager_nf = MemoryManager(total_size=0, allocation_strategy=NextFitStrategy())  # total size is irrelevant here
+    memory_manager_nf.memory_pool = initial_memory #setting the memory pool to our defined one
 
-    print("\nMemory Map after allocations (Next Fit):")
-    print(memory_manager_nf.get_memory_map())
+    processes = [("A", 120), ("B", 450), ("C", 90)]
+    process_allocations = {} #to store allocation results
 
-    memory_manager_nf.deallocate(2)
-    print("\nMemory map after deallocating process 2 (Next Fit) :")
-    print(memory_manager_nf.get_memory_map())
-    pid4 = memory_manager_nf.allocate(4, 15)
+    for process_name, process_size in processes:
+        start_address = memory_manager_nf.allocate(process_name, process_size)
+        if start_address!= -1:
+           process_allocations[process_name] = start_address
 
-    print("\nMemory Map after allocating process 4(Next Fit) : ")
-    print(memory_manager_nf.get_memory_map())
+        print(f"\nMemory Map after allocating {process_name} (size {process_size}): ")
+        print(memory_manager_nf.get_memory_map())
+
+    print("\nFinal Memory Allocation:")
+    for process_name, start_address in process_allocations.items():
+        print(f"Process {process_name}: Allocated in Block starting at {start_address} KB")
